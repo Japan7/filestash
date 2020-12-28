@@ -11,7 +11,7 @@ import { Icon } from "../../components/";
 import hls from "hls.js";
 import "./videoplayer.scss";
 
-export function VideoPlayer({ filename, data, path }) {
+export function VideoPlayer({ filename, data, path, subtitlesTrack }) {
     const $video = useRef();
     const $container = useRef();
     const [isPlaying, setIsPlaying] = useState(false);
@@ -384,7 +384,7 @@ export function VideoPlayer({ filename, data, path }) {
     const subtitlesOctopusInstantiate = () => {
         const options = {
             video: $video.current,
-            subUrl: data.substr(0, data.lastIndexOf(".")) + ".ass",
+            subUrl: subtitlesTrack,
             workerUrl: "/assets/vendor/libass-wasm/subtitles-octopus-worker.js",
             legacyWorkerUrl:
                 "/assets/vendor/libass-wasm/subtitles-octopus-worker-legacy.js",
