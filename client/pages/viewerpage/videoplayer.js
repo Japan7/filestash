@@ -382,6 +382,9 @@ export function VideoPlayer({ filename, data, path, subtitlesTrack }) {
     }, []);
 
     const subtitlesOctopusInstantiate = () => {
+        if (!subtitlesTrack) {
+            return;
+        }
         const options = {
             video: $video.current,
             subUrl: subtitlesTrack,
